@@ -221,7 +221,7 @@ export function Home({ catalog }: { catalog: Catalog }) {
         </div>
         {apps.length === 0 ? (
           <div className="grid gap-4 md:grid-cols-3">
-            {(["feature_1", "feature_2", "feature_3"] as DictKey[]).map((key, i) => (
+            {["feature_1", "feature_2", "feature_3"].map((key, i) => (
               <div key={key} className="card p-6">
                 <div className="btn btn-soft !min-h-10 !w-10 !p-0 mb-4 font-bold">{i + 1}</div>
                 <h3 className="font-semibold">{t(lang, `${key}_title` as DictKey)}</h3>
