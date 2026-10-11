@@ -74,3 +74,20 @@ npm run typecheck
 - **كلمة مرور zsign:** تُمرَّر كوسيط سطر أوامر، وهي مرئية لعمليات النظام المحلية لفترة التوقيع القصيرة. يُفضّل تشغيل zsign في حاوية معزولة أو عامل توقيع منفصل عند الإنتاج.
 - **المكتبات:** لم تُستخدم Framer Motion، وحركات الواجهة بـ CSS فقط.
 - **MFA:** TOTP مدعوم عند ضبط `ADMIN_TOTP_SECRET`. بدونه تعتمد الحماية على كلمة المرور فقط.
+
+## الواجهة العامة على GitHub Pages / Static storefront on GitHub Pages
+
+الرابط: https://abu00salman.github.io/ipa
+
+- `site/` مشروع Next.js منفصل بـ `output: "export"` و`basePath: "/ipa"`. يُبنى بـ `npm run build:site` ويُنشر تلقائيًا عبر `.github/workflows/pages.yml` عند الدفع إلى `main`.
+- الكتالوج يأتي من `site/data/catalog.json`، وهو لقطة للتطبيقات المنشورة. الواجهة الثابتة لا تقرأ قاعدة البيانات.
+- تحديث الكتالوج من الخادم (حيث توجد قاعدة البيانات): `npm run export:catalog -- --live-url https://your-server`.
+- التثبيت المباشر من Pages يتطلب نشر IPA موقّع وmanifest: `npm run export:catalog:packages`. الملفات الموقّعة تصبح عامة بعد النشر، فاستخدمه فقط لبناءات تقبل مشاركتها. الزر يعمل فقط للتطبيقات `ad-hoc` أو `enterprise` ذات الملف الصالح، وغير ذلك يحيل إلى الخادم الرئيسي.
+- الشهادات وملفات التعريف وسجلات المدير لا تُنسخ أبدًا إلى الواجهة الثابتة.
+- لوحة الإدارة، ورفع IPA، والتوقيع، ونقاط `/api` و`/i` و`/dl` تبقى في المشروع الجذر (`app/`)، وتحتاج خادمًا يعمل بـ Node. لا تعمل على GitHub Pages.
+
+### الانتقال إلى iramzipa.com لاحقًا
+
+1. اربط الدومين بالخادم الذي يشغّل المشروع الجذر، ثم عيّن `PUBLIC_BASE_URL=https://iramzipa.com`.
+2. لنشر الواجهة الثابتة على الدومين نفسه، ابنِ بـ `SITE_BASE_PATH= npm run build:site` (بلا basePath) وانشر `site/out` على الدومين.
+3. أعد تصدير الكتالوج مع `--origin https://iramzipa.com` لتصبح روابط manifest والتحميل على الدومين.

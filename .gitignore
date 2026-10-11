@@ -8,3 +8,5 @@ data/
 coverage/
 next-env.d.ts
 tsconfig.tsbuildinfo
+site/out/
+tsconfig.tsbuildinfo

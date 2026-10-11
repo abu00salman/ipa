@@ -1,0 +1,9 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "incremental": false,
+    "plugins": [{ "name": "next" }]
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "../components/**/*.tsx", "../lib/i18n.ts", "../lib/themes.ts", "../types/**/*.d.ts", ".next/types/**/*.ts"],
+  "exclude": ["node_modules", "out", "../zsign-src"]
+}
