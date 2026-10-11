@@ -1,0 +1,39 @@
+{
+  "name": "iramzipa",
+  "version": "0.1.0",
+  "private": true,
+  "description": "iRaMzipa — منصة توقيع وتثبيت تطبيقات iOS",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "lint": "tsc --noEmit",
+    "hash-password": "node scripts/hash-password.mjs",
+    "test:signing": "vitest run tests/signing.integration.test.ts"
+  },
+  "dependencies": {
+    "bplist-parser": "^0.3.2",
+    "fflate": "^0.8.2",
+    "next": "^15.5.4",
+    "node-forge": "^1.3.1",
+    "plist": "^3.1.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.14",
+    "@types/node": "^22.18.8",
+    "@types/node-forge": "^1.3.14",
+    "@types/react": "^19.1.13",
+    "@types/react-dom": "^19.1.9",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.14",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4"
+  }
+}
