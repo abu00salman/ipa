@@ -220,9 +220,18 @@ export function Home({ catalog }: { catalog: Catalog }) {
           <span className="muted text-sm">{catalog.apps.length === 1 ? t(lang, "apps_count_one") : t(lang, "apps_count", { count: catalog.apps.length })}</span>
         </div>
         {apps.length === 0 ? (
-          <div className="card px-6 py-14 text-center">
-            <p className="text-lg font-semibold">{q ? t(lang, "no_results") : t(lang, "empty_title")}</p>
-            {!q && <p className="muted mt-2">{t(lang, "empty_body")}</p>}
+          <div className="grid gap-4 md:grid-cols-3">
+            {["feature_1", "feature_2", "feature_3"].map((key, i) => (
+              <div key={key} className="card p-6">
+                <div className="btn btn-soft !min-h-10 !w-10 !p-0 mb-4 font-bold">{i + 1}</div>
+                <h3 className="font-semibold">{t(lang, `${key}_title` as DictKey)}</h3>
+                <p className="muted mt-2 text-sm leading-7">{t(lang, `${key}_body` as DictKey)}</p>
+              </div>
+            ))}
+            <div className="card px-6 py-8 text-center md:col-span-3">
+              <p className="text-lg font-semibold">{q ? t(lang, "no_results") : t(lang, "empty_title")}</p>
+              {!q && <p className="muted mt-2">{t(lang, "empty_body")}</p>}
+            </div>
           </div>
         ) : (
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
