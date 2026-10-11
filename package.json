@@ -14,7 +14,10 @@
     "test": "vitest run",
     "lint": "tsc --noEmit",
     "hash-password": "node scripts/hash-password.mjs",
-    "test:signing": "vitest run tests/signing.integration.test.ts"
+    "test:signing": "vitest run tests/signing.integration.test.ts",
+    "build:site": "cd site && next build",
+    "export:catalog": "node scripts/export-catalog.mjs",
+    "export:catalog:packages": "node scripts/export-catalog.mjs --with-packages"
   },
   "dependencies": {
     "bplist-parser": "^0.3.2",
